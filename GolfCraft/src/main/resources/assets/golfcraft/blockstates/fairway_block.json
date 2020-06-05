@@ -1,0 +1,10 @@
+{
+    "variants": {
+        "facing=north": { "model": "golfcraft:block/fairway_block" },
+        "facing=east":  { "model": "golfcraft:block/fairway_block", "y": 90 },
+        "facing=south": { "model": "golfcraft:block/fairway_block", "y": 180 },
+        "facing=west":  { "model": "golfcraft:block/fairway_block", "y": 270 },
+        "facing=up":  { "model": "golfcraft:block/fairway_block", "x": -90 },
+        "facing=down":  { "model": "golfcraft:block/fairway_block", "x": 90 }
+    }
+}

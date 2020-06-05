@@ -1,0 +1,35 @@
+{
+	"item.golfcraft.putter":"Putter",
+	"item.golfcraft.lob_wedge":"Lob Wedge",
+	"item.golfcraft.sand_wedge":"Sand Wedge",
+	"item.golfcraft.gap_wedge":"Gap Wedge",
+	"item.golfcraft.pitching_wedge":"Pitching Wedge",
+	"item.golfcraft.nine_iron":"Eisen 9",
+	"item.golfcraft.eight_iron":"Eisen 8",
+	"item.golfcraft.seven_iron":"Eisen 7",
+	"item.golfcraft.six_iron":"Eisen 6",
+	"item.golfcraft.five_iron":"Eisen 5",
+	"item.golfcraft.four_iron":"Eisen 4",
+	"item.golfcraft.three_iron":"Eisen 3",
+	"item.golfcraft.two_iron":"Eisen 2",
+	"item.golfcraft.five_wood":"Holz 5",
+	"item.golfcraft.four_wood":"Holz 4",
+	"item.golfcraft.three_wood":"Holz 3",
+	"item.golfcraft.driver":"Driver",
+	
+	"block.golfcraft.green_block":"Grün",
+	"block.golfcraft.fairway_block":"Fairway",
+	"block.golfcraft.hole_block":"Loch",
+	
+	"block.golfcraft.hazard":"Penalty Area",
+	"block.golfcraft.lateral_hazard":Seitliche Penalty Area",
+	"block.golfcraft.out_of_bounds":"Aus-Marker",
+	"block.golfcraft.fifty_marker":"50m Markierung",
+	"block.golfcraft.one_hundred_marker":"100m Markierung",
+	
+	"item.golfcraft.ball_marker":"Ball Markierer",
+	
+	"item.golfcraft.golfball_item":"Golfball",
+	
+	"itemGroup.golfcraft":"GolfCraft"
+}

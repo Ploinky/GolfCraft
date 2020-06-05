@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "  i",
+    " i ",
+    "I  "
+  ],
+  "key": {
+    "i": {
+      "tag": "minecraft:planks"
+    },
+    "I": {
+      "tag": "forge:dyes"
+    }
+  },
+  "result": {
+    "item": "golfcraft:ball_marker"
+  }
+}

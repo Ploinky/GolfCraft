@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "iii",
+    "iIi",
+    "iii"
+  ],
+  "key": {
+    "i": {
+      "tag": "forge:leather"
+    },
+    "I": {
+      "tag": "forge:ingots/iron"
+    }
+  },
+  "result": {
+    "item": "golfcraft:golfball_item",
+    "count": 6
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "iii",
+    "lll",
+    "III"
+  ],
+  "key": {
+    "i": {
+      "item": "minecraft:dirt"
+    },
+    "l": {
+      "tag": "forge:sand"
+    },
+    "I": {
+      "tag": "forge:stone"
+    }
+  },
+  "result": {
+    "item": "golfcraft:green_block",
+    "count": 16
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "iii",
+    "III"
+  ],
+  "key": {
+    "i": {
+      "item": "minecraft:dirt"
+    },
+    "I": {
+      "tag": "forge:stone"
+    }
+  },
+  "result": {
+    "item": "golfcraft:fairway_block",
+    "count": 16
+  }
+}

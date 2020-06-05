@@ -1,0 +1,12 @@
+{
+    "parent": "block/cube",
+    "textures": {
+        "particle": "golfcraft:blocks/fairway_block",
+        "up": "golfcraft:blocks/fairway_block",
+        "down": "golfcraft:blocks/fairway_block",
+        "east": "golfcraft:blocks/fairway_block",
+        "west": "golfcraft:blocks/fairway_block",
+        "north":"golfcraft:blocks/fairway_block",
+        "south":"golfcraft:blocks/fairway_block"
+	}
+}

@@ -1,0 +1,16 @@
+{
+	"type": "minecraft:entity",
+	"pools": [
+	{
+		"name": "golfball",
+		"rolls": 1,
+		"entries":
+		[
+		{
+			"type": "minecraft:item",
+			"name": "golfcraft:golfball_item"
+		}
+		]
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "i i",
+    "iIi",
+    "iii"
+  ],
+  "key": {
+    "i": {
+      "tag": "minecraft:planks"
+    },
+    "I": {
+      "item": "golfcraft:golfball_item"
+    }
+  },
+  "result": {
+    "item": "golfcraft:hole_block"
+  }
+}

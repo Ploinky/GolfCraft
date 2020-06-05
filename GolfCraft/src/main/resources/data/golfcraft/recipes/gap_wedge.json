@@ -1,0 +1,14 @@
+{
+	"type": "minecraft:crafting_shapeless",
+	"ingredients": [
+		{
+			"item": "golfcraft:sand_wedge"
+		},
+		{
+			"tag": "forge:ingots/iron"
+		}
+	],
+	"result": {
+		"item": "golfcraft:gap_wedge"
+	}
+}

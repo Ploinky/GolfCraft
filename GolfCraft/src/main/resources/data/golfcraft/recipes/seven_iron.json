@@ -1,0 +1,14 @@
+{
+	"type": "minecraft:crafting_shapeless",
+	"ingredients": [
+		{
+			"item": "golfcraft:eight_iron"
+		},
+		{
+			 "tag": "forge:ingots/iron"
+		}
+	],
+	"result": {
+		"item": "golfcraft:seven_iron"
+	}
+}

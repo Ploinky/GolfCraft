@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "Ii ",
+    " i ",
+    " i "
+  ],
+  "key": {
+    "i": {
+      "tag": "minecraft:planks"
+    },
+    "I": {
+      "tag": "forge:dyes/white"
+    }
+  },
+  "result": {
+    "item": "golfcraft:out_of_bounds",
+    "count": 4
+  }
+}

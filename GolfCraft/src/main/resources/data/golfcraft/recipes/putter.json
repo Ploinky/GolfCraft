@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "  i",
+    " I ",
+    "I  "
+  ],
+  "key": {
+    "i": {
+      "item": "minecraft:yellow_wool"
+    },
+    "I": {
+      "tag": "forge:ingots/iron"
+    }
+  },
+  "result": {
+    "item": "golfcraft:putter"
+  }
+}
