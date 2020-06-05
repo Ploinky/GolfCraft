@@ -71,9 +71,5 @@ public class BallMarkerScreen extends Screen
 	private void nameBall(String name)
 	{
 		golfball.setCustomName(new StringTextComponent(name));
-//		this.minecraft.getConnection()
-//				.sendPacket(new UpdateGolfballNamePacket(new BlockPos(commandBlockLogicIn.getPositionVector()),
-//						this.nameTextField.getText(), this.commandBlockMode, commandBlockLogicIn.shouldTrackOutput(),
-//						this.conditional, this.automatic));
 	}
 }
