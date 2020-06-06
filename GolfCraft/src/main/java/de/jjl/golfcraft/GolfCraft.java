@@ -1,6 +1,8 @@
 package de.jjl.golfcraft;
 
-import de.jjl.golfcraft.util.RegistryHandler;
+import de.jjl.golfcraft.block.ModBlocks;
+import de.jjl.golfcraft.entity.ModEntities;
+import de.jjl.golfcraft.item.ModItems;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
@@ -23,7 +25,9 @@ public class GolfCraft
 		FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
 		FMLJavaModLoadingContext.get().getModEventBus().addListener(this::doClientStuff);
 		
-		RegistryHandler.init();
+		ModEntities.init();
+		ModBlocks.init();
+		ModItems.init();
 
 		MinecraftForge.EVENT_BUS.register(this);
 	}
@@ -41,7 +45,7 @@ public class GolfCraft
 		@Override
 		public ItemStack createIcon()
 		{
-			return new ItemStack(RegistryHandler.SEVEN_IRON.get());
+			return new ItemStack(ModItems.SEVEN_IRON.get());
 		}
 	};
 }

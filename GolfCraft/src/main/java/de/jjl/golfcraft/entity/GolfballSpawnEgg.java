@@ -1,6 +1,6 @@
 package de.jjl.golfcraft.entity;
 
-import de.jjl.golfcraft.util.RegistryHandler;
+import de.jjl.golfcraft.item.ModItems;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.projectile.ProjectileItemEntity;
@@ -22,18 +22,18 @@ public class GolfballSpawnEgg extends ProjectileItemEntity
 
 	public GolfballSpawnEgg(World worldIn, LivingEntity throwerIn)
 	{
-		super(RegistryHandler.GOLFBALL_EGG.get(), throwerIn, worldIn);
+		super(ModEntities.GOLFBALL_EGG.get(), throwerIn, worldIn);
 	}
 
 	public GolfballSpawnEgg(World worldIn, double x, double y, double z)
 	{
-		super(RegistryHandler.GOLFBALL_EGG.get(), x, y, z, worldIn);
+		super(ModEntities.GOLFBALL_EGG.get(), x, y, z, worldIn);
 	}
 
 	@Override
 	protected Item getDefaultItem()
 	{
-		return RegistryHandler.PUTTER.get();
+		return ModItems.PUTTER.get();
 	}
 
 	@Override
@@ -47,7 +47,7 @@ public class GolfballSpawnEgg extends ProjectileItemEntity
 
 		if (!this.world.isRemote)
 		{
-			Golfball golfball = RegistryHandler.GOLFBALL.get().create(this.world);
+			Golfball golfball = ModEntities.GOLFBALL.get().create(this.world);
 			
 			if(ballName != null)
 			{

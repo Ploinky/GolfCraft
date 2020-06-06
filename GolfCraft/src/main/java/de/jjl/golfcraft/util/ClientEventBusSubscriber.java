@@ -1,6 +1,7 @@
 package de.jjl.golfcraft.util;
 
 import de.jjl.golfcraft.GolfCraft;
+import de.jjl.golfcraft.entity.ModEntities;
 import de.jjl.golfcraft.entity.render.GolfballRenderer;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -15,7 +16,7 @@ public class ClientEventBusSubscriber
 	@SubscribeEvent
 	public static void clientSetup(FMLClientSetupEvent event)
 	{
-		RenderingRegistry.registerEntityRenderingHandler(RegistryHandler.GOLFBALL.get(), GolfballRenderer::new);
+		RenderingRegistry.registerEntityRenderingHandler(ModEntities.GOLFBALL.get(), GolfballRenderer::new);
 	}
 	
 }

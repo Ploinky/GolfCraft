@@ -4,9 +4,9 @@ import java.util.function.Supplier;
 
 import de.jjl.golfcraft.item.BallMarker;
 import de.jjl.golfcraft.item.GolfballItem;
+import de.jjl.golfcraft.item.ModItems;
 import de.jjl.golfcraft.item.club.BaseGolfclub;
 import de.jjl.golfcraft.util.ClientGuiHandler;
-import de.jjl.golfcraft.util.RegistryHandler;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.MobEntity;
@@ -49,7 +49,7 @@ public class Golfball extends MobEntity
 
 				for (int j = 0; j < i; ++j)
 				{
-					Golfball golfball = RegistryHandler.GOLFBALL.get().create(this.world);
+					Golfball golfball = ModEntities.GOLFBALL.get().create(this.world);
 					golfball.setLocationAndAngles(this.getPosX(), this.getPosY(), this.getPosZ(), this.rotationYaw,
 							0.0F);
 					this.world.addEntity(golfball);
@@ -223,7 +223,7 @@ public class Golfball extends MobEntity
 	{
 		if (!this.world.isRemote)
 		{
-			GolfballItem golfballItem = (GolfballItem) RegistryHandler.GOLFBALL_ITEM.get().asItem();
+			GolfballItem golfballItem = (GolfballItem) ModItems.GOLFBALL_ITEM.get().asItem();
 			
 			if(hasCustomName())
 			{
