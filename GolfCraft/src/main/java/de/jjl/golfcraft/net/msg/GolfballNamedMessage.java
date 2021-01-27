@@ -2,15 +2,9 @@ package de.jjl.golfcraft.net.msg;
 
 import java.util.function.Supplier;
 
-import com.mojang.realmsclient.dto.PlayerInfo;
-
 import de.jjl.golfcraft.entity.Golfball;
 import de.jjl.golfcraft.item.ModItems;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.ai.attributes.AttributeModifierMap.MutableAttribute;
-import net.minecraft.entity.ai.attributes.Attributes;
-import net.minecraft.entity.player.PlayerAbilities;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.PacketBuffer;

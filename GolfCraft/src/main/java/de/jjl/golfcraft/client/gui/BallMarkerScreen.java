@@ -7,16 +7,14 @@ import net.minecraft.client.gui.chat.NarratorChatListener;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.widget.TextFieldWidget;
 import net.minecraft.client.gui.widget.button.Button;
-import net.minecraft.client.resources.I18n;
-import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.StringTextComponent;
 
 public class BallMarkerScreen extends Screen
 {
-//	private static final ResourceLocation BACKGROUD_TEXTURE = new ResourceLocation(GolfCraft.MOD_ID,
-//			"textures/gui/ball_marker_screen.png");
 	protected TextFieldWidget nameTextField;
+	
 	protected Button doneButton;
+	
 	protected Button cancelButton;
 
 	private Golfball golfball;
@@ -29,11 +27,11 @@ public class BallMarkerScreen extends Screen
 
 	protected void init()
 	{
-		this.getMinecraft().keyboardListener.enableRepeatEvents(true);
+		minecraft.keyboardListener.enableRepeatEvents(true);
 		this.doneButton = addButton(new Button(this.width / 2 - 4 - 150, this.height / 4 + 120 + 12, 150, 20,
-				new StringTextComponent("gui.done"), btn -> onDoneButtonPressed()));
+				new StringTextComponent("Done"), btn -> onDoneButtonPressed()));
 		this.cancelButton = this.addButton(new Button(this.width / 2 + 4, this.height / 4 + 120 + 12, 150, 20,
-				new StringTextComponent("gui.cancel"), btn -> onClose()));
+				new StringTextComponent("Cancel"), btn -> onClose()));
 
 		nameTextField = new TextFieldWidget(this.font, this.width / 2 - 150, 50, 300, 20,
 				new StringTextComponent("advMode.command"));

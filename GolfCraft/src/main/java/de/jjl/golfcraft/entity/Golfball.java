@@ -10,10 +10,8 @@ import de.jjl.golfcraft.util.ClientGuiHandler;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.MobEntity;
-import net.minecraft.entity.ai.attributes.Attribute;
 import net.minecraft.entity.ai.attributes.AttributeModifierMap;
 import net.minecraft.entity.ai.attributes.Attributes;
-import net.minecraft.entity.ai.attributes.ModifiableAttributeInstance;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
@@ -94,6 +92,7 @@ public class Golfball extends MobEntity
 				{
 					return new SafeCallable<Void>()
 					{
+						private static final long serialVersionUID = -6847612316498040408L;
 
 						@Override
 						public Void call() throws Exception
