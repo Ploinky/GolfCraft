@@ -11,13 +11,13 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 
-public class ModBlocks extends DeferredRegister<Block>
+public class ModBlocks
 {
-	public static final ModBlocks INSTANCE = new ModBlocks();
+	public static final DeferredRegister<Block> INSTANCE = DeferredRegister.create(ForgeRegistries.BLOCKS, GolfCraft.MOD_ID);;
+	
 	
 	private ModBlocks()
 	{
-		super(ForgeRegistries.BLOCKS, GolfCraft.MOD_ID);
 	}
 
 	public static void init()

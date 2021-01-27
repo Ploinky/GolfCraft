@@ -10,17 +10,21 @@ import de.jjl.golfcraft.util.ClientGuiHandler;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.MobEntity;
-import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.entity.ai.attributes.Attribute;
+import net.minecraft.entity.ai.attributes.AttributeModifierMap;
+import net.minecraft.entity.ai.attributes.Attributes;
+import net.minecraft.entity.ai.attributes.ModifiableAttributeInstance;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.item.NameTagItem;
+import net.minecraft.util.ActionResultType;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.Hand;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.RayTraceResult;
-import net.minecraft.util.math.Vec3d;
+import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
@@ -61,9 +65,9 @@ public class Golfball extends MobEntity
 		}
 
 	}
-	
+
 	@Override
-	public boolean processInteract(PlayerEntity player, Hand hand)
+	public ActionResultType applyPlayerInteraction(PlayerEntity player, Vector3d vec, Hand hand)
 	{
 		ItemStack itemstack = player.getHeldItem(hand);
 
@@ -73,17 +77,17 @@ public class Golfball extends MobEntity
 			double distance = getDistance(player);
 
 			distance -= 2.5;
-			
+
 			BaseGolfclub club = ((BaseGolfclub) player.getHeldItemMainhand().getItem());
 			knockBack(player, (float) Math.max(0.1, club.getForce((float) distance / 2) - 16),
 					(double) MathHelper.sin(player.rotationYaw * ((float) Math.PI / 180F)),
-					(double) (-MathHelper.cos(player.rotationYaw * ((float) Math.PI / 180F))), (1f/3f) * club.getHeight());
+					(double) (-MathHelper.cos(player.rotationYaw * ((float) Math.PI / 180F))),
+					(1f / 3f) * club.getHeight());
 
-			return true;
-		}
-		else if (BallMarker.class.isInstance(itemstack.getItem()) && hand == Hand.MAIN_HAND)
+			return ActionResultType.SUCCESS;
+		} else if (BallMarker.class.isInstance(itemstack.getItem()) && hand == Hand.MAIN_HAND)
 		{
-			DistExecutor.safeCallWhenOn(Dist.CLIENT, new  Supplier<DistExecutor.SafeCallable<Void>>()
+			DistExecutor.safeCallWhenOn(Dist.CLIENT, new Supplier<DistExecutor.SafeCallable<Void>>()
 			{
 				@Override
 				public SafeCallable<Void> get()
@@ -99,16 +103,15 @@ public class Golfball extends MobEntity
 						}
 					};
 				}
-				
+
 			});
-			return true;
-		}
-		else
+			return ActionResultType.SUCCESS;
+		} else
 		{
-			return super.processInteract(player, hand);
+			return super.applyPlayerInteraction(player, vec, hand);
 		}
 	}
-	
+
 	public Golfball(EntityType<Golfball> type, World worldIn)
 	{
 		super(type, worldIn);
@@ -123,13 +126,13 @@ public class Golfball extends MobEntity
 		float f2 = MathHelper.cos(rotationYawIn * ((float) Math.PI / 180F))
 				* MathHelper.cos(rotationPitchIn * ((float) Math.PI / 180F));
 		this.shoot((double) f, (double) f1, (double) f2, velocity, inaccuracy);
-		Vec3d vec3d = entityThrower.getMotion();
-		this.setMotion(this.getMotion().add(vec3d.x, entityThrower.onGround ? 0.0D : vec3d.y, vec3d.z));
+		Vector3d vec3d = entityThrower.getMotion();
+		this.setMotion(this.getMotion().add(vec3d.x, entityThrower.isOnGround() ? 0.0D : vec3d.y, vec3d.z));
 	}
 
 	public void shoot(double x, double y, double z, float velocity, float inaccuracy)
 	{
-		Vec3d vec3d = (new Vec3d(x, y, z)).normalize()
+		Vector3d vec3d = (new Vector3d(x, y, z)).normalize()
 				.add(this.rand.nextGaussian() * (double) 0.0075F * (double) inaccuracy,
 						this.rand.nextGaussian() * (double) 0.0075F * (double) inaccuracy,
 						this.rand.nextGaussian() * (double) 0.0075F * (double) inaccuracy)
@@ -158,13 +161,12 @@ public class Golfball extends MobEntity
 
 		return super.hitByEntity(entityIn);
 	}
-	
+
 	@Override
 	public boolean isInRangeToRenderDist(double distance)
 	{
 		return true;
 	}
-	
 
 	@Override
 	public boolean attackEntityFrom(DamageSource source, float amount)
@@ -172,8 +174,7 @@ public class Golfball extends MobEntity
 		if (!world.isRemote && source.getTrueSource() instanceof PlayerEntity)
 		{
 			return hit(source);
-		}
-		else if(source.getTrueSource() instanceof PlayerEntity)
+		} else if (source.getTrueSource() instanceof PlayerEntity)
 		{
 			PlayerEntity player = (PlayerEntity) source.getTrueSource();
 			if (NameTagItem.class.isInstance(player.getHeldItemMainhand().getItem()))
@@ -217,24 +218,21 @@ public class Golfball extends MobEntity
 		return false;
 	}
 
-	
-	
 	protected void dropLoot()
 	{
 		if (!this.world.isRemote)
 		{
 			GolfballItem golfballItem = (GolfballItem) ModItems.GOLFBALL_ITEM.get().asItem();
-			
-			if(hasCustomName())
+
+			if (hasCustomName())
 			{
 				golfballItem.setBallName(getCustomName().getString());
 			}
-			
 
 			entityDropItem(new ItemStack(golfballItem));
 		}
 	}
-	
+
 	@Override
 	public void onCollideWithPlayer(PlayerEntity entityIn)
 	{
@@ -258,17 +256,17 @@ public class Golfball extends MobEntity
 	public void knockBack(Entity entityIn, float strength, double xRatio, double zRatio, double height)
 	{
 		net.minecraftforge.event.entity.living.LivingKnockBackEvent event = net.minecraftforge.common.ForgeHooks
-				.onLivingKnockBack(this, entityIn, strength, xRatio, zRatio);
+				.onLivingKnockBack(this, strength, xRatio, zRatio);
 		if (event.isCanceled())
 			return;
 		strength = event.getStrength();
 		xRatio = event.getRatioX();
 		zRatio = event.getRatioZ();
-		if (!(this.rand.nextDouble() < this.getAttribute(SharedMonsterAttributes.KNOCKBACK_RESISTANCE).getValue()))
+		if (!(this.rand.nextDouble() < this.getAttribute(Attributes.KNOCKBACK_RESISTANCE).getValue()))
 		{
 			this.isAirBorne = true;
-			Vec3d vec3d = this.getMotion();
-			Vec3d vec3d1 = (new Vec3d(xRatio, height, zRatio)).normalize().scale((double) strength);
+			Vector3d vec3d = this.getMotion();
+			Vector3d vec3d1 = (new Vector3d(xRatio, height, zRatio)).normalize().scale((double) strength);
 			this.setMotion(vec3d.x / 2.0D - vec3d1.x, height, vec3d.z / 2.0D - vec3d1.z);
 		}
 	}
@@ -286,5 +284,10 @@ public class Golfball extends MobEntity
 	public void setCustomName(String ballName)
 	{
 		setCustomName(new StringTextComponent(ballName));
+	}
+
+	public static AttributeModifierMap.MutableAttribute getAttributes()
+	{
+		return MobEntity.func_233666_p_().createMutableAttribute(Attributes.MAX_HEALTH, 30.0D);
 	}
 }

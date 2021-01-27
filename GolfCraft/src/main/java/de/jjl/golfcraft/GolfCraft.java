@@ -1,11 +1,14 @@
 package de.jjl.golfcraft;
 
 import de.jjl.golfcraft.block.ModBlocks;
+import de.jjl.golfcraft.entity.Golfball;
 import de.jjl.golfcraft.entity.ModEntities;
 import de.jjl.golfcraft.item.ModItems;
+import net.minecraft.entity.ai.attributes.GlobalEntityTypeAttributes;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.fml.DeferredWorkQueue;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
@@ -34,6 +37,8 @@ public class GolfCraft
 
 	private void setup(final FMLCommonSetupEvent event)
 	{
+		DeferredWorkQueue.runLater(() -> {
+            GlobalEntityTypeAttributes.put(ModEntities.GOLFBALL.get(), Golfball.getAttributes().create());}); 
 	}
 
 	private void doClientStuff(final FMLClientSetupEvent event)

@@ -8,6 +8,7 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvents;
+import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.world.World;
 
 public class GolfballItem extends ItemBase
@@ -24,7 +25,10 @@ public class GolfballItem extends ItemBase
 			GolfballSpawnEgg eggEntity = new GolfballSpawnEgg(worldIn, playerIn);
 			eggEntity.setBallName(ballName);
 			eggEntity.setItem(itemstack);
-			eggEntity.shoot(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 0.0F, 1.5F, 1.0F);
+			
+			Vector3d look = playerIn.getLookVec();
+			
+			eggEntity.shoot(look.x, look.y, look.z, 1.5F, 1.0F);
 			worldIn.addEntity(eggEntity);
 		}
 

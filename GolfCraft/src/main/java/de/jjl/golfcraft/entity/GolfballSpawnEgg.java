@@ -42,7 +42,7 @@ public class GolfballSpawnEgg extends ProjectileItemEntity
 		if (result.getType() == RayTraceResult.Type.ENTITY)
 		{
 			((EntityRayTraceResult) result).getEntity()
-					.attackEntityFrom(DamageSource.causeThrownDamage(this, this.getThrower()), 0.0F);
+					.attackEntityFrom(DamageSource.causeThrownDamage(this, this.getEntity()), 0.0F);
 		}
 
 		if (!this.world.isRemote)

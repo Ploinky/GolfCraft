@@ -9,13 +9,12 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 
-public class ModEntities extends DeferredRegister<EntityType<?>>
+public class ModEntities
 {
-	public static final ModEntities INSTANCE = new ModEntities();
+	public static final DeferredRegister<EntityType<?>> INSTANCE = DeferredRegister.create(ForgeRegistries.ENTITIES, GolfCraft.MOD_ID);
 
 	private ModEntities()
 	{
-		super(ForgeRegistries.ENTITIES, GolfCraft.MOD_ID);
 	}
 	
 	public static void init()

@@ -29,13 +29,12 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 
-public class ModItems extends DeferredRegister<Item>
+public class ModItems
 {
-	public static final ModItems INSTANCE = new ModItems();
+	public static final DeferredRegister<Item> INSTANCE = DeferredRegister.create(ForgeRegistries.ITEMS, GolfCraft.MOD_ID);
 	
 	private ModItems()
 	{
-		super(ForgeRegistries.ITEMS, GolfCraft.MOD_ID);
 	}
 
 	public static void init()
