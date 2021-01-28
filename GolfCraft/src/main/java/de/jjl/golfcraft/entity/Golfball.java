@@ -263,13 +263,20 @@ public class Golfball extends MobEntity
 		strength = event.getStrength();
 		xRatio = event.getRatioX();
 		zRatio = event.getRatioZ();
-		if (!(this.rand.nextDouble() < this.getAttribute(Attributes.KNOCKBACK_RESISTANCE).getValue()))
+
+		if(entityIn instanceof PlayerEntity)
 		{
-			this.isAirBorne = true;
-			Vector3d vec3d = this.getMotion();
-			Vector3d vec3d1 = (new Vector3d(xRatio, height, zRatio)).normalize().scale((double) strength);
-			this.setMotion(vec3d.x / 2.0D - vec3d1.x, height, vec3d.z / 2.0D - vec3d1.z);
+			if(((PlayerEntity) entityIn).isSneaking())
+			{
+				height = height / 5;
+				strength = strength / 3;
+			}
 		}
+
+		this.isAirBorne = true;
+		Vector3d vec3d = this.getMotion();
+		Vector3d vec3d1 = (new Vector3d(xRatio, height, zRatio)).normalize().scale((double) strength);
+		this.setMotion(vec3d.x / 2.0D - vec3d1.x, height, vec3d.z / 2.0D - vec3d1.z);
 	}
 
 	@Override
