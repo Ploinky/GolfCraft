@@ -194,7 +194,8 @@ public class Golfball extends MobEntity
 	{
 		PlayerEntity player = (PlayerEntity) source.getTrueSource();
 
-		if (BaseGolfclub.class.isInstance(player.getHeldItemMainhand().getItem()))
+		if (BaseGolfclub.class.isInstance(player.getHeldItemMainhand().getItem())
+				&& !getEntity().isInWater())
 		{
 			double distance = getDistance(player);
 
@@ -206,7 +207,8 @@ public class Golfball extends MobEntity
 					(double) (-MathHelper.cos(player.rotationYaw * ((float) Math.PI / 180F))), club.getHeight());
 
 			return true;
-		} else if (player.getHeldItemMainhand().getItem() == Items.AIR)
+		}
+		else if (player.getHeldItemMainhand().getItem() == Items.AIR)
 		{
 			dropLoot();
 			remove();
